@@ -28,10 +28,24 @@ binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)
 		return (NULL);
 
 	else if (value < parent->n)
+	{
+		if (parent->left)
+		{
+			free(new_node);
+			return (NULL);
+		}
 		binary_tree_node(parent->left, value);
+	}
 
 	else if  (value > parent->n)
+	{
+		if (parent->right)
+		{
+			free(new_node);
+			return (NULL);
+		}
 		binary_tree_node(parent->right, value);
+	}
 
 	return (new_node);
 }
